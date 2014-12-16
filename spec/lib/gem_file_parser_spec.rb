@@ -10,7 +10,7 @@ require_relative '../../lib/gem_file_parser'
 # folder conventions: spec/anything else
 
 
-describe 'My behaviour' do
+describe 'gem file parser' do
 
   before(:each) do
 #    @uut = GemfileParser.new []
@@ -35,8 +35,8 @@ describe 'My behaviour' do
     expect(uut.dependencies.values[0]).to eq '~> 3.2.13'
   end
 
-  it 'extract multiple lines correctly' do
-    uut = GemfileParser.new ['gem "rails"  ,  "~> 3.2.13" ', ' gem  "json" ']
+  it 'extract multiple lines correctly + the use of single quote' do
+    uut = GemfileParser.new ['gem \'rails\'  ,  \'~> 3.2.13\' ', ' gem  "json" ']
     expect(uut.dependencies.size).to be 2
     expect(uut.dependencies.values[0]).to eq '~> 3.2.13'
     expect(uut.dependencies.keys[1]).to eq 'json'

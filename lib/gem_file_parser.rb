@@ -24,7 +24,7 @@ class GemfileParser
   end
 
   def remove_quotes(str)
-    str.gsub(/\A"|"\Z/, '')
+    str.gsub(/\A"|"\Z|\A'|'\Z/, '')
   end
 
   def extract_gem_data_line(line)
