@@ -9,12 +9,12 @@ describe 'Analyzer' do
     rep2 = GemfileParser.new [ 'gem \'rails\', \'4.1.0\'']
 
     uut = Analyzer.new([rep1, rep2])
-    verInfo = uut.getMultipleVersions
+    gem_info = uut.get_multiple_versions
 
-    expect(verInfo.keys.size).to be 1
-    expect(verInfo['rails'].versions.size).to be 2
-    expect(verInfo['rails'].versions.include? '~> 3.2.13').to be true
-    expect(verInfo['rails'].versions.include? '4.1.0').to be true
+    expect(gem_info.keys.size).to be 1
+    expect(gem_info['rails'].versions.size).to be 2
+    expect(gem_info['rails'].versions.include? '~> 3.2.13').to be true
+    expect(gem_info['rails'].versions.include? '4.1.0').to be true
   end
 
   it 'does not count the same version twice' do
@@ -23,10 +23,10 @@ describe 'Analyzer' do
     rep3 = GemfileParser.new [ 'gem \'rails\', \'4.1.0\'']
 
     uut = Analyzer.new([rep1, rep2, rep3])
-    verInfo = uut.getMultipleVersions
-    p verInfo
-    expect(verInfo.keys.size).to be 1
-    expect(verInfo['rails'].versions.size).to be 2
+    gem_info = uut.get_multiple_versions
+    p gem_info
+    expect(gem_info.keys.size).to be 1
+    expect(gem_info['rails'].versions.size).to be 2
   end
 
 end

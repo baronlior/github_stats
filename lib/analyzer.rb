@@ -2,7 +2,7 @@ class Analyzer
 
   GemInfo = Struct.new(:versions) do
     def initialize
-      self.versions = []
+      self['versions'] = []
     end
   end
 
@@ -10,7 +10,7 @@ class Analyzer
     @configs = config_array
   end
 
-  def getMultipleVersions
+  def get_multiple_versions
     result = {}
 
     @configs.each do |config|
